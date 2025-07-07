@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body>
+<h2>Token überprüfen</h2>
+<form method="POST" action="/submit-token">
+  <input name="token" placeholder="token" size="100"/>
+  <button type="submit">Login</button>
+</form>
+
+<br />
+<br />
+
+<h2>Token generieren</h2>
+<form method="POST" action="/generate-token">
+  <label>Payload</label>
+  <div>
+    <textarea name="payload" rows="6" cols="50"></textarea>
+  </div>
+  <label>Secret</label>
+  <div>
+    <input name="secret" placeholder="sectret-key" size="50"/>
+  </div>
+  <br />
+  <br />
+  <button type="submit">Token generieren</button>
+  <div id="response"></div>
+</form>
+</body>
+</html>

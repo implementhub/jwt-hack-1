@@ -1,0 +1,14 @@
+{
+  "name": "jwt-hack",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "4.18.2",
+    "sqlite3": "5.1.7",
+    "body-parser": "2.2.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
