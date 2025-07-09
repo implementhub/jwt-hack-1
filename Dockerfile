@@ -5,7 +5,9 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 
+COPY properties/application.properties ./properties/
+
 COPY . .
 
-EXPOSE 1234
+EXPOSE 1111
 CMD ["npm", "start"]

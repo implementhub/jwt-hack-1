@@ -6,10 +6,24 @@
 </head>
 <body>
 <h2>Login</h2>
+<label>
+  Schwierigkeit auf schwer setzen:
+  <input type="checkbox" id="difficultySwitch" />
+</label>
+<br /><br />
 <form method="POST" action="/login">
   <input name="username" placeholder="username" />
   <input name="password" placeholder="password" type="password" />
   <button type="submit">Login</button>
 </form>
+<script>
+  document.getElementById('difficultySwitch').addEventListener('change', function() {
+    fetch('/set-difficulty', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'difficulty=' + this.checked
+    });
+  });
+</script>
 </body>
 </html>
