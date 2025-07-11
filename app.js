@@ -115,7 +115,6 @@ app.get('/view', (req, res) => {
 app.post('/set-difficulty', (req, res) => {
   difficulty = req.body.difficulty === 'true';
   res.json({ success: true, difficulty });
-  console.log("SCHWIERIGKEIT SCHWER=" + difficulty)
   if(difficulty) {
     jwt_secret = process.env.JWT_SECRET.toString()
   }
