@@ -100,9 +100,11 @@ app.post('/generate-token', (req, res) => {
 
 app.get('/view', (req, res) => {
   const file = req.query.file;
-  if (file.endsWith('.js')) {
+
+  if (!file || file.endsWith('.js')) {
     return res.status(404).send('Datei nicht gefunden oder Zugriff verweigert.');
   }
+
   const filePath = path.join(__dirname, file);
   res.sendFile(filePath, err => {
     if (err) {
