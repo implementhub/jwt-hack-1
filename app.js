@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const path = require('path');
 
-let jwt_secret = "supersecretkey"; // Default secret key
+let jwt_secret = "JWTSuperSecretKey"; // Default secret key
 let difficulty = false; // Default difficulty level
 
 // Server configuration
