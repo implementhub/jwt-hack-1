@@ -66,16 +66,16 @@ app.post('/submit-token', (req, res) => {
     if(decoded.role === 'user') {
       let responseBody = `
         <h1>Willkommen, ${decoded.username}!</h1>
-        <p>Du bist als User eingelogged.</p>
+        <p>Request als User abgeschickt.</p>
         `
-      if( difficulty) {
+      if( difficulty === true) {
         responseBody += `<h3>Hier gehts zur About Seite</h3>
         <a href="http://localhost:1111/view?file=about.html">about</a>`;
       }
       return res.send(responseBody);
     }
     else if (decoded.role === 'admin') {
-      return res.send(`<h1>Willkommen, ${decoded.username}!</h1><p>Du bist als Admin eingelogged.</p>`);
+      return res.send(`<h1>Willkommen, ${decoded.username}!</h1><p>Request als Admin abgeschickt.</p>`);
     } else {
       return res.status(403).send('Ungültige Role.');
     }
@@ -100,6 +100,9 @@ app.post('/generate-token', (req, res) => {
 
 app.get('/view', (req, res) => {
   const file = req.query.file;
+  if (file.endsWith('.js')) {
+    return res.status(404).send('Datei nicht gefunden oder Zugriff verweigert.');
+  }
   const filePath = path.join(__dirname, file);
   res.sendFile(filePath, err => {
     if (err) {
@@ -117,7 +120,6 @@ app.post('/set-difficulty', (req, res) => {
     jwt_secret = process.env.JWT_SECRET.toString()
   }
 });
-
 
 
 // start the server
